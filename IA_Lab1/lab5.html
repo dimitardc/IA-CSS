@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head runat="server">
+        <title>Increase and Decrease Font Using Jquery and CSS</title>
+        <script src="jquery-3.4.1.js"></script>   
+        </script>
+        <style>
+          .box{
+            background-color: rgb(87, 159, 231);
+            padding: 10px;
+            margin-right: 1550px;
+            border: 1px solid black;
+            float: left;
+          }
+          .btn{
+            width: 100px;
+          }
+        </style>
+     </head>
+     <body>
+      <div class="box">
+         <h1>Golemina na font</h1>
+        <input type="button" class="btn" id="resetMe" value=" Pocetna ">
+        <input type="button" class="btn" id="increase" value=" Zgolemi ">
+        <input type="button" class="btn" id="decrease" value=" Namali ">
+      </div>
+       <div class="info">
+        <h1>How to connect to the internet</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, suscipit!</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, fugiat.</p>
+      </div>
+      <script>
+        $(document).ready(function(){
+            var OG = $('.info').css('font-size');  
+            $("#resetMe").click(function(){
+              $(".info").css("font-size", OG);
+            });
+            $("#increase").click(function(){
+              $(".info").animate({"fontSize": "+=1.5px"})
+            });
+            $("#decrease").click(function(){
+              $(".info").animate({"fontSize": "-=1.5px"})
+            });
+        });
+      </script>
+     </body>
+</html>

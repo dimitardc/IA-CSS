@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label{
+            display: inline-block;
+            width: 140px;
+            text-align: left;
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+    <h2>Форма за пријава на Х-Фактор</h2>
+    <form id="myform">
+            <label>Име</label>
+            <input type="text" id="name" name="firstname"> <br>
+            <label>Уметничко име</label>
+            <input type="text" id="uName" name="lastname"> <br>
+            <div id="pol">
+                <label>Пол</label>
+                <input type="radio" id="ml" name="gender" value="Машки"> Машки
+                <input type="radio" id="fm" name="gender" value="Женски" > Женски <br>
+            </div>
+            <label>Жанр</label>
+            <select id="sel">
+                <option value="classical music">classical music</option>
+                <option value="performance">performance</option>
+                <option value="comedy">comedy</option>
+                <option value="other">other</option>
+            </select> <br>
+            <input type="button" value="Прајави се" onclick="myFunction()">
+    </form>
+    </div>
+    <script>
+        function myFunction(){
+            var myFrom = document.getElementById('myform');
+            var nameInput = document.getElementById("name");
+            var unameInput = document.getElementById("uName");
+            var mlInput = document.getElementById("ml").checked;
+            var fmInput = document.getElementById("fm").checked;
+            var genInput = document.getElementById("sel");
+            myFunc();
+            function myFunc(){
+                if(nameInput.value === "" || unameInput.value === "" || (mlInput == false && fmInput == false)){
+                    window.alert("Сите полиња се задолжителни");
+                }
+                else{
+                    if(mlInput == true)
+                        window.alert(nameInput.value + " " + unameInput.value+", Машкo,"+ genInput.value+" - успешно се пријавивте");
+                    else if(fmInput == true)
+                        window.alert(nameInput.value + " " + unameInput.value+", Женскo," + genInput.value+" - успешно се пријавивте");
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>

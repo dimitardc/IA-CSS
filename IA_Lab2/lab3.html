@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery-3.4.1.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#dialog").dialog({                       //dialog initialising
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                Submit: function(){
+                    $("#list").append(
+                        $("<li>").append(
+                            $("#author").val() +" / "+ $("#bookName").val() +" / "+ $("#comment").val()
+                        )
+                    );
+                    $("#dialog").dialog("close");
+                },
+                Cancel: function(){
+                    $("#dialog").dialog("close");
+                }
+            }
+        });
+        $("#modal").click(function(){
+            $("#dialog").dialog("open");
+        });
+    });
+    </script>
+    <style>
+        h1{
+            margin-left: 39px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <button id="modal">Add</button>
+    <h1>Reccomend your favourite book!</h1>
+    <div id="dialog" title="Basic dialog">
+        <p>Author</p>
+        <input type="text" id="author">
+        <p>Name of the book</p>
+        <input type="text" id="bookName">
+        <p>Comment</p>
+        <input type="text" id="comment">
+    </div>
+    
+    <ol id="list">
+        <h4>Author / Book / Comment</h4>
+    </ol>
+</body>
+</html>
