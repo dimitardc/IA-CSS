@@ -1,2 +1,2 @@
 # IA-CSS
-Interactive Applications CSS
+Interactive Applications CSS-Ajax-Jquery
