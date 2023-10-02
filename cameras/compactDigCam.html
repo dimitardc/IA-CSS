@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery-3.4.1.js"></script>
+    <script src="jquery-ui.js"></script>
+    <style>
+   
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
+        }
+
+        li {
+        text-align: center;
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+        }
+
+        li a:hover {
+        background-color: #111111;
+        }
+        #grid{
+            height: 500px;
+            width: 400px;
+            
+        }
+        #grid div{
+            background-color: transparent;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            float: left;
+            text-align: center;
+        }
+        #acc{
+            
+            width: 20%;
+        }
+    </style>
+    <script>
+    $(document).ready(function(){
+            $("#serviceAcc").accordion({collapsible: "true" , active : "false",header: "h3"});
+
+            $("#inspiredAcc").accordion({collapsible: "true" , active : "false",header: "h3"});
+
+            $("#supportAcc").accordion({collapsible: "true" , active : "false",header: "h3"});
+            
+            $("button").hide();
+            $("#grid div").hover(function(){
+                $(this).find("button").show();
+            },function(){
+                $(this).find("button").hide();
+            },1000)
+        });
+    </script>
+</head>
+<body>
+<div id="mainMenu">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+    </ul>
+</div>
+<h1>Compact & Digital Cameras</h1>
+<div id="grid">
+    <div id="elem1">
+        <h5>PowerShot G3 X</h5>
+        <button>Add to cart</button>
+        <button>Rate</button>
+    </div>
+    <div id="elem2">
+        <h5>PowerShot G5 X</h5>
+        <button>Add to cart</button>
+        <button>Rate</button>
+    </div>
+    <div id="elem3">
+        <h5>PowerShot G3 X</h5>
+        <button>Add to cart</button>
+        <button>Rate</button>
+    </div>
+    <div id="elem4">
+        <h5>PowerShot G7 X</h5>
+        <button>Add to cart</button>
+        <button>Rate</button>
+    </div>
+    <div id="elem5">
+        <h5>PowerShot G9 X</h5>
+        <button>Add to cart</button>
+        <button>Rate</button>
+    </div>
+    <div id="elem6">
+        <h5>PowerShot SX 530 HS</h5>
+        <button>Add to cart</button>
+        <button>Rate</button>
+    </div>
+</div>
+
+<div id="acc">
+    <div id="serviceAcc">
+        <h3>Services & Apps</h3>
+        <div>
+            <div id="serviceAcc_1">
+            <h6>Services</h6>
+            <div>
+            <a href="#">test 1</a>
+            <a href="#">test 2</a>
+            <a href="#">test 3</a>
+            </div>
+        </div>
+        <div id="serviceAcc_2">
+            <h6>Apps</h6>
+            <div>
+            <a href="#">test 1</a>
+            <a href="#">test 2</a>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+    <div id="inspiredAcc">
+        <h3>Get Inspired</h3>
+        <div>
+        <a href="#">test 1</a>
+        <a href="#">test 2</a>
+        <a href="#">test 3</a>
+        </div>
+    </div>
+
+    <div id="supportAcc">
+        <h3>Support</h3>
+        <div>
+        <a href="#">test 1</a>
+        <a href="#">test 2</a>
+        <a href="#">test 3</a>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>

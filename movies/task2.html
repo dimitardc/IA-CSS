@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Movies</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/start/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+	
+	<script>
+	// the api requires an api key, so it can be used
+	// you can get an api key for free here http://www.omdbapi.com/apikey.aspx
+	var apikey = "a6592a8d";
+
+	function getMovie(title){
+		$.ajax({
+			url: "http://omdbapi.com/?t=" + title + "&apikey=" + apikey,
+			dataType: "json",
+			success: function (data) {				//zimanje i dodeluvanje na vrednosti
+				$("#lblTitle").html(data.Title);
+				$("#lblRating").html(data.imdbRating);
+				$("#lblImdbID").html(data.imdbID);
+				$("#lblActors").html(data.Director);
+				$("#lblDirector").html(data.Actors);
+				$("#imgPoster").attr('src',data.Poster);
+			}					
+		});
+	}
+	$(document).ready(function(){
+		$( "#selectable" ).selectable({
+			selected: function() {
+				var title = $('.ui-selected').text();	//7)pri click na li se zima title kako val()
+				getMovie(title);		//8) se prakja vo ajax func
+			}
+		});
+
+
+		//dialog initialise
+		$("#dialog-message" ).dialog({
+			modal: true,
+			autoOpen: false,
+			buttons: {
+				Ok: function() {		//3) pishuvame film vo textbox i clickame OK
+					$("#selectable").append("<li class='ui-widget-content'>" + $("#txtTitle").val() + "</li>")
+					$(this).dialog("close");
+				},
+				Cancel: function() {
+					$(this).dialog("close");
+				}
+			}
+		});
+		
+		$("#bntAdd").click(function(){				//1)  click na add movie
+			$( "#dialog-message" ).dialog('open');	
+		});
+		
+	});
+	
+	</script>        
+	<style>
+	#feedback { font-size: 1.4em; }
+	#selectable .ui-selecting { background: #FECA40; }
+	#selectable .ui-selected { background: #F39814; color: white; }
+	#selectable { list-style-type: none; margin: 0; padding: 0; width: 50%; }
+	#selectable li { margin: 3px; padding: 0.4em; font-size: 1.1em; height: 12px; }
+	li{
+		cursor: pointer;
+	}
+	</style>	
+</head>
+
+<body>
+	<div id='movies'>
+		<input id="bntAdd" type="button" value="Add movie"/>
+		<ol id="selectable" class="ui-selectable">
+			<li class="ui-widget-content ui-selectee">Oblivion</li>
+			<li class="ui-widget-content ui-selectee">Elysium</li>
+			<li class="ui-widget-content ui-selectee">Avatar</li>
+			<li class="ui-widget-content ui-selectee">Inception</li>
+		</ol>
+	</div>
+	<div id='entries'>
+		<label style="font-weight:bold;">Title :</label> <label id="lblTitle"></label> <br/>
+		<label style="font-weight:bold;">ImdbID :</label> <label id="lblImdbID"></label> <br/>
+		<label style="font-weight:bold;">Rating :</label> <label id="lblRating"></label> <br/>
+		<label style="font-weight:bold;">Director :</label> <label id="lblDirector"></label> <br/>
+		<label style="font-weight:bold;">Actors :</label> <label id="lblActors"></label> <br/>
+		<img id="imgPoster" src=""/>
+	</div>
+
+	<div id="dialog-message" title="Download complete">
+		<p>
+			Enter title of the movie.
+			<input id="txtTitle" type="text"/>
+		</p>
+	</div>
+</body>
+</html>
